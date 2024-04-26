@@ -1,285 +1,286 @@
 (function() {
     const self = document.querySelector.bind(document);
     self('body').insertAdjacentHTML('afterbegin', `
-<div id="star_counter"></div>
-<div id="star_counter_text">0</div>
-<div id="star_counter_username">Unknown</div>
-<div id="settings_background" class="panel" style="opacity: 0; pointer-events: none;"></div>
-<div id="settings_menu" style="top: -100%;"></div>
-<h1 id="settings_header" class="radiantColor">Settings</h1>
-<hr id="settings_divider_top">
-<div id="settings_cobalt_mode">
-<label id="settings_cobalt_mode_text">placeholder (going to be cobalt mode</label>
-<label class="switch">
-<input type="checkbox">
-<span class="slider"></span>
-</label>
-</div>
-<hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
-<button id="settings_back">BACK</button>
-<style>
-.switch {
-position:relative;
-display:inline-block;
-width:60px;
-height:34px
-}
-
-.switch input {
-opacity:0;
-width:0;
-height:0
-}
-
-.slider {
-border-radius:34px;
-position:absolute;
-cursor:pointer;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background-color:#ccc;
--webkit-transition:.4s;
-transition:.4s
-}
-
-.slider:before {
-border-radius:50%;
-position:absolute;
-content:"";
-height:26px;
-width:26px;
-left:4px;
-bottom:4px;
-background-color:#fff;
--webkit-transition:.4s;
-transition:.4s
-}
-
-input:checked+.slider {
-background-color:#2196F3
-}
-
-input:focus+.slider {
-box-shadow:0 0 1px #2196F3
-}
-
-input:checked+.slider:before {
--webkit-transform:translateX(26px);
--ms-transform:translateX(26px);
-transform:translateX(26px)
-}
-
-#settings_cobalt_mode {
-display:flex;
-align-items:center;
-justify-content:center;
--webkit-text-size-adjust:100%;
--webkit-tap-highlight-color:#0000;
-line-height:1.5;
--webkit-font-smoothing:antialiased;
-font-size:1vmin;
-color:#fff;
-font-family:Roboto;
-font-weight:700;
-text-align:center;
-box-sizing:border-box;
-margin-bottom:.5vmin;
-margin-top:.5vmin
-}
-
-#settings_cobalt_mode_text {
--webkit-text-size-adjust:100%;
--webkit-tap-highlight-color:#0000;
-line-height:1.5;
--webkit-font-smoothing:antialiased;
-color:#fff;
-box-sizing:border-box;
-font-size:2vmin;
-font-family:Roboto;
-font-weight:400;
-margin:1vmin;
-text-align:center;
-margin-bottom:.2vmin;
-margin-top:.2vmin
-}
-
-#settings_divider_top {
--webkit-text-size-adjust:100%;
--webkit-tap-highlight-color:#0000;
-line-height:1.5;
--webkit-font-smoothing:antialiased;
-font-size:1vmin;
-color:#fff;
-font-family:Roboto;
-font-weight:700;
-text-align:center;
-box-sizing:content-box;
-overflow:visible;
-border:0;
-height:1vmin;
-width:100%;
-margin-bottom:.5vmin;
-margin-top:.5vmin;
-border-top:.2vmin solid #fff
-}
-
-#settings_back {
-visibility:visible;
-pointer-events:all;
-transform-origin:0 0;
-font-family:Roboto;
-user-select:none;
-outline:none;
-background:#0003;
-border:5px solid #0003;
-border-radius:8px;
-display:inline;
-cursor:pointer;
-position:absolute;
-bottom:20px;
-left:50%;
-transform:translate(-50%,0);
-font-weight:700;
-color:#fff;
-font-size:30px;
-padding-top:5px;
-padding-left:10px;
-padding-right:10px
-}
-
-#settings_menu {
-visibility:visible;
-pointer-events:all;
-transform-origin:0 0;
-font-family:Roboto;
-user-select:none;
-outline:none;
-position:absolute;
-left:50%;
-width:800px;
-height:calc(75% - 200px);
-transform:translate(-50%,-50%);
-background:#000000b3;
-border:5px solid #0003;
-border-radius:9px;
-transition:top .5s ease;
-top:-100%
-}
-
-#settings_header {
--webkit-text-size-adjust:100%;
--webkit-tap-highlight-color:#0000;
-line-height:1.5;
--webkit-font-smoothing:antialiased;
-color:#fff;
-box-sizing:border-box;
-font-size:3.5vmin;
-text-align:center;
-font-family:Roboto;
-font-weight:700;
-margin-bottom:.5vmin;
-margin-top:.5vmin
-}
-
-#star_counter_text,#star_counter_username {
-pointer-events:inherit;
-visibility:visible;
-color:#fff;
-text-shadow:-3px -3px 0 #000,0 -3px 0 #000,3px -3px 0 #000,3px 0 0 #000,3px 3px 0 #000,0 3px 0 #000,-3px 3px 0 #000,-3px 0 0 #000,-3px -2px 0 #000,-3px 2px 0 #000,-2px 3px 0 #000,2px 3px 0 #000,3px 2px 0 #000,3px -2px 0 #000,2px -3px 0 #000,-2px -3px 0 #000;
-font-size:50px;
-font-weight:800;
-white-space:nowrap;
-transform-origin:0 0;
-font-family:Roboto;
-user-select:none;
-outline:none;
-position:fixed;
-top:0;
-right:0;
-margin-top:75px;
-margin-right:20px
-}
-
-#star_counter_username {
-margin-top:25px
-}
-
-#settings_background {
-visibility:visible;
-transform-origin:0 0;
-font-family:Roboto;
-user-select:none;
-outline:none;
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#00000080;
-transition:opacity .5s ease;
-opacity:0;
-pointer-events:none
-}
-
-#star_counter_image {
-position:fixed;
-top:0;
-right:0;
-margin-top:75px;
-margin-right:60px;
-width:55px;
-height:55px
-}
-
-#view_account_button {
-border:none;
-border-radius:.5vmin;
-background-color:#0092c3;
-box-shadow:0 0 0 .4vmin #000;
-position:fixed;
-top:0;
-right:0;
-margin-top:140px;
-margin-right:20px;
-width:60px;
-height:60px
-}
-
-#view_account_image {
-position:fixed;
-top:0;
-right:0;
-margin-top:140px;
-margin-right:20px;
-width:60px;
-height:60px
-}
-
-#settings_button {
-border:none;
-border-radius:.5vmin;
-background-color:#888;
-box-shadow:0 0 0 .4vmin #000;
-position:fixed;
-top:0;
-right:0;
-margin-top:140px;
-margin-right:100px;
-width:60px;
-height:60px
-}
-
-#settings_image {
-position:fixed;
-top:0;
-right:0;
-margin-top:140px;
-margin-right:100px;
-width:60px;
-height:60px
-}
+            <div id="star_counter">
+                <span id="star_counter_text">0</span>
+                <span id="star_counter_username">Unknown</span>
+            </div>
+            <div id="settings_background" class="panel" style="opacity: 0; pointer-events: none;"></div>
+            <div id="settings_menu" style="top: -100%;"></div>
+            <h1 id="settings_header" class="radiantColor">Settings</h1>
+            <hr id="settings_divider_top">
+            <div id="settings_cobalt_mode">
+                <label>
+                    <span id="settings_cobalt_mode_text">placeholder (going to be cobalt mode)</span>
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
+            <button id="settings_back">BACK</button>
+            <style>
+                .switch {
+                    position:relative;
+                    display:inline-block;
+                    width:60px;
+                    height:34px
+                }
+                
+                .switch input {
+                    opacity:0;
+                    width:0;
+                    height:0
+                }
+                
+                .slider {
+                    border-radius:34px;
+                    position:absolute;
+                    cursor:pointer;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background-color:#ccc;
+                    -webkit-transition:.4s;
+                    transition:.4s
+                }
+                
+                .slider:before {
+                    border-radius:50%;
+                    position:absolute;
+                    content:"";
+                    height:26px;
+                    width:26px;
+                    left:4px;
+                    bottom:4px;
+                    background-color:#fff;
+                    -webkit-transition:.4s;
+                    transition:.4s
+                }
+                
+                input:checked+.slider {
+                    background-color:#2196F3
+                }
+                
+                input:focus+.slider {
+                    box-shadow:0 0 1px #2196F3
+                }
+                
+                input:checked+.slider:before {
+                    -webkit-transform:translateX(26px);
+                    -ms-transform:translateX(26px);
+                    transform:translateX(26px)
+                }
+                
+                #settings_cobalt_mode {
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    -webkit-text-size-adjust:100%;
+                    -webkit-tap-highlight-color:#0000;
+                    line-height:1.5;
+                    -webkit-font-smoothing:antialiased;
+                    font-size:1vmin;
+                    color:#fff;
+                    font-family:Roboto;
+                    font-weight:700;
+                    text-align:center;
+                    box-sizing:border-box;
+                    margin-bottom:.5vmin;
+                    margin-top:.5vmin
+                }
+                
+                #settings_cobalt_mode_text {
+                    -webkit-text-size-adjust:100%;
+                    -webkit-tap-highlight-color:#0000;
+                    line-height:1.5;
+                    -webkit-font-smoothing:antialiased;
+                    color:#fff;
+                    box-sizing:border-box;
+                    font-size:2vmin;
+                    font-family:Roboto;
+                    font-weight:400;
+                    margin:1vmin;
+                    text-align:center;
+                    margin-bottom:.2vmin;
+                    margin-top:.2vmin
+                }
+                
+                #settings_divider_top {
+                    -webkit-text-size-adjust:100%;
+                    -webkit-tap-highlight-color:#0000;
+                    line-height:1.5;
+                    -webkit-font-smoothing:antialiased;
+                    font-size:1vmin;
+                    color:#fff;
+                    font-family:Roboto;
+                    font-weight:700;
+                    text-align:center;
+                    box-sizing:content-box;
+                    overflow:visible;
+                    border:0;
+                    height:1vmin;
+                    width:100%;
+                    margin-bottom:.5vmin;
+                    margin-top:.5vmin;
+                    border-top:.2vmin solid #fff
+                }
+                
+                #settings_back {
+                    visibility:visible;
+                    pointer-events:all;
+                    transform-origin:0 0;
+                    font-family:Roboto;
+                    user-select:none;
+                    outline:none;
+                    background:#0003;
+                    border:5px solid #0003;
+                    border-radius:8px;
+                    display:inline;
+                    cursor:pointer;
+                    position:absolute;
+                    bottom:20px;
+                    left:50%;
+                    transform:translate(-50%,0);
+                    font-weight:700;
+                    color:#fff;
+                    font-size:30px;
+                    padding-top:5px;
+                    padding-left:10px;
+                    padding-right:10px
+                }
+                
+                #settings_menu {
+                    visibility:visible;
+                    pointer-events:all;
+                    transform-origin:0 0;
+                    font-family:Roboto;
+                    user-select:none;
+                    outline:none;
+                    position:absolute;
+                    left:50%;
+                    width:800px;
+                    height:calc(75% - 200px);
+                    transform:translate(-50%,-50%);
+                    background:#000000b3;
+                    border:5px solid #0003;
+                    border-radius:9px;
+                    transition:top .5s ease;
+                    top:-100%
+                }
+                
+                #settings_header {
+                    -webkit-text-size-adjust:100%;
+                    -webkit-tap-highlight-color:#0000;
+                    line-height:1.5;
+                    -webkit-font-smoothing:antialiased;
+                    color:#fff;
+                    box-sizing:border-box;
+                    font-size:3.5vmin;
+                    text-align:center;
+                    font-family:Roboto;
+                    font-weight:700;
+                    margin-bottom:.5vmin;
+                    margin-top:.5vmin
+                }
+                
+                #star_counter_text,#star_counter_username {
+                    pointer-events:inherit;
+                    visibility:visible;
+                    color:#fff;
+                    text-shadow:-3px -3px 0 #000,0 -3px 0 #000,3px -3px 0 #000,3px 0 0 #000,3px 3px 0 #000,0 3px 0 #000,-3px 3px 0 #000,-3px 0 0 #000,-3px -2px 0 #000,-3px 2px 0 #000,-2px 3px 0 #000,2px 3px 0 #000,3px 2px 0 #000,3px -2px 0 #000,2px -3px 0 #000,-2px -3px 0 #000;
+                    font-size:50px;
+                    font-weight:800;
+                    white-space:nowrap;
+                    transform-origin:0 0;
+                    font-family:Roboto;
+                    user-select:none;
+                    outline:none;
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    margin-top:75px;
+                    margin-right:20px
+                }
+                
+                #star_counter_username {
+                    margin-top:25px
+                }
+                
+                #settings_background {
+                    visibility:visible;
+                    transform-origin:0 0;
+                    font-family:Roboto;
+                    user-select:none;
+                    outline:none;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    background:#00000080;
+                    transition:opacity .5s ease;
+                    opacity:0;
+                    pointer-events:none
+                }
+                
+                #star_counter_image {
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    margin-top:75px;
+                    margin-right:60px;
+                    width:55px;
+                    height:55px
+                }
+                
+                #view_account_button {
+                    border:none;
+                    border-radius:.5vmin;
+                    background-color:#0092c3;
+                    box-shadow:0 0 0 .4vmin #000;
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    margin-top:140px;
+                    margin-right:20px;
+                    width:60px;
+                    height:60px
+                }
+                
+                #view_account_image {
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    margin-top:140px;
+                    margin-right:20px;
+                    width:60px;
+                    height:60px
+                }
+                
+                #settings_button {
+                    border:none;
+                    border-radius:.5vmin;
+                    background-color:#888;
+                    box-shadow:0 0 0 .4vmin #000;
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    margin-top:140px;
+                    margin-right:100px;
+                    width:60px;
+                    height:60px
+                }
+                
+                #settings_image {
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    margin-top:140px;
+                    margin-right:100px;
+                    width:60px;
+                    height:60px
+                }
         </style>
     `);
     var overlay1 = document.querySelector("#overlay1");

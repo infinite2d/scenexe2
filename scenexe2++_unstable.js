@@ -12,6 +12,7 @@
             <div id="settings_uncap">
                 <label>
                     <span id="settings_uncap_text">Uncap Slider Limits</span>
+                    <label class="switch">
                     <input type="checkbox">
                     <span class="slider"></span>
                 </label>

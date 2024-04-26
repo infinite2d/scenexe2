@@ -321,7 +321,7 @@ height:60px
     var settingsDividerBottom = document.querySelector('#settings_divider_bottom');
     var settingsCobaltMode = document.querySelector('#settings_cobalt_mode');
     var settingsCobaltModeSwitch = document.querySelector('#settings_cobalt_mode input[type="checkbox"]');
-
+    
     var regularAccountMenu = document.querySelector("#accountFull");
     var accountMenuDarkness = document.querySelector("#accountDark");
     var tankHealth = null;
@@ -330,23 +330,23 @@ height:60px
     var totalStarsBeforeDeath = null;
     var tankKillsBeforeDeath = null;
     var playtimeBeforeDeath = null;
-
+    
     starCounterText.innerText = "0";
     settingsHeader.textContent = 'Settings';
-
+    
     starCounterImage.src = 'https://scenexe.io/assets/star_small.png';
     starCounterImage.id = 'star_counter_image';
-
+    
     viewAccountButton.id = 'view_account_button';
-
+    
     settingsImage.src = 'https://scenexe.io/assets/button_settings.png';
     settingsImage.id = 'settings_image';
-
+    
     settingsButton.id = 'settings_button';
-
+    
     viewAccountImage.src = 'https://scenexe.io/assets/button_account.png';
     viewAccountImage.id = 'view_account_image';
-
+    
     modals.appendChild(settingsBackground);
     modals.appendChild(settingsMenu);
     deathScreen.appendChild(settingsButton);
@@ -362,19 +362,19 @@ height:60px
     settingsMenu.appendChild(settingsDividerBottom);
     settingsMenu.appendChild(settingsCobaltMode);
     viewAccountButton.appendChild(viewAccountImage);
-
-    viewAccountButton.addEventListener('click', function(){
-       if (regularAccountMenu.style.top === '-100%') {
-          regularAccountMenu.style.top = '50%';
-          accountMenuDarkness.style.opacity = '1';
-          accountMenuDarkness.style.pointer_events = 'all';
-       } else if (regularAccountMenu.style.top === '50%') {
-          regularAccountMenu.style.top = '-100%';
-          accountMenuDarkness.style.opacity = '0';
-          accountMenuDarkness.style.pointer_events = 'none';
-       }
+    
+    viewAccountButton.addEventListener('click', function() {
+        if (regularAccountMenu.style.top === '-100%') {
+            regularAccountMenu.style.top = '50%';
+            accountMenuDarkness.style.opacity = '1';
+            accountMenuDarkness.style.pointer_events = 'all';
+        } else if (regularAccountMenu.style.top === '50%') {
+            regularAccountMenu.style.top = '-100%';
+            accountMenuDarkness.style.opacity = '0';
+            accountMenuDarkness.style.pointer_events = 'none';
+        }
     });
-    settingsButton.addEventListener('click', function(){
+    settingsButton.addEventListener('click', function() {
         settingsMenu.style.top = '50%';
         settingsBackground.style.opacity = '1';
         settingsBackground.style.pointerEvents = 'all';
@@ -384,12 +384,16 @@ height:60px
         settingsBackground.style.opacity = '0';
         settingsBackground.style.pointerEvents = 'none';
     });
+    
     function isAd(element) {
         const href = element.getAttribute('href');
         if (href && (href.includes('https://ad.doubleclick.net') || href.includes('https://www.googleadservices.com'))) {
             return true;
-        } else {return false;}
+        } else {
+            return false;
+        }
     }
+    
     function adjustAdSize() {
         /*        document.querySelectorAll('*').forEach(function(element) {
             console.log(isAd(element));
@@ -406,8 +410,9 @@ height:60px
             }
         });*/
     }
-
+    
     settingsCobaltModeSwitch.addEventListener('change', adjustAdSize);
+    
     function retrieveData(accountData) {
         return fetch(accountData)
             .then(response => {
@@ -420,7 +425,7 @@ height:60px
                 console.error('There was a problem with the fetch operation:', error);
             });
     }
-
+    
     function resetTankScore() {
         var tankScoreElement = document.querySelector("#tankScoreDisplay");
         var tankScoreHTML = tankScoreElement.innerHTML;
@@ -432,7 +437,7 @@ height:60px
             }
         })
     }
-
+    
     function resetStats() {
         var previousAccountData = starsElement.innerHTML;
         var starLines = previousAccountData.split('<br>');
@@ -443,7 +448,7 @@ height:60px
             }
         });
     }
-
+    
     function checkAccountContent() {
         starsElement = document.querySelector("#accountContent > div:nth-child(5)");
         accountName = document.querySelector("#accountContent > div:nth-child(5)");
@@ -469,12 +474,12 @@ height:60px
             setTimeout(checkAccountContent, 500);
         }
     }
-
+    
     function getUsername(deathMessage) {
         var matches = deathMessage.match(/Username: (.+)/);
         return matches ? matches[1] : "Unknown";
     }
-
+    
     function setupobserver(accountData) {
         const observer1 = new MutationObserver((mutationsList, observer) => {
             for (const mutation of mutationsList) {
@@ -531,23 +536,23 @@ height:60px
                 }
             });
         });
-const observer3 = new ResizeObserver((entries) => {
-    for (let entry of entries) {
-        const starCounterTextRect = entry.contentRect;
-        const newMarginRight = starCounterTextRect.width + 30;
-        const starCounterImage = document.querySelector("#star_counter_image");
-        if (starCounterImage) {
-            starCounterImage.style.marginRight = `${newMarginRight}px`;
-        }
-    }
-});
-
+        const observer3 = new ResizeObserver((entries) => {
+            for (let entry of entries) {
+                const starCounterTextRect = entry.contentRect;
+                const newMarginRight = starCounterTextRect.width + 30;
+                const starCounterImage = document.querySelector("#star_counter_image");
+                if (starCounterImage) {
+                    starCounterImage.style.marginRight = `${newMarginRight}px`;
+                }
+            }
+        });
+        
         const observerConfig = {
             attributes: true,
             attributeFilter: ['style'],
             attributeOldValue: true,
         };
-
+        
         observer1.observe(deathScreen, observerConfig);
         observer2.observe(overlay1, observerConfig);
         observer3.observe(starCounterText);

@@ -11,28 +11,28 @@
 <hr id="settings_divider_top">
 <div id="settings_uncap">
 <label id="settings_uncap_text">placeholder (going to be cobalt mode</label>
-<label class="switch">
+<label class="switch_settings">
 <input type="checkbox">
-<span class="slider"></span>
+<span class="slider_settings"></span>
 </label>
 </div>
 <hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
 <button id="settings_back">BACK</button>
 <style>
-               .switch {
+               .switch_settings {
 position:relative;
 display:inline-block;
 width:60px;
 height:34px
 }
 
-.switch input {
+.switch_settings input {
 opacity:0;
 width:0;
 height:0
 }
 
-.slider {
+.slider_settings {
 border-radius:34px;
 position:absolute;
 cursor:pointer;
@@ -45,7 +45,7 @@ background-color:#ccc;
 transition:.4s
 }
 
-.slider:before {
+.slider_settings:before {
 border-radius:50%;
 position:absolute;
 content:"";
@@ -58,15 +58,15 @@ background-color:#fff;
 transition:.4s
 }
 
-input:checked+.slider {
+input:checked+.slider_settings {
 background-color:#2196F3
 }
 
-input:focus+.slider {
+input:focus+.slider_settings {
 box-shadow:0 0 1px #2196F3
 }
 
-input:checked+.slider:before {
+input:checked+.slider_settings:before {
 -webkit-transform:translateX(26px);
 -ms-transform:translateX(26px);
 transform:translateX(26px)

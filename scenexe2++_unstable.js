@@ -284,6 +284,8 @@ transform:translateX(26px)
         </style>
     `);
     var overlay1 = document.querySelector("#overlay1");
+    var debugMenu = document.querySelector("#debugSlide");
+    var debugSliders = debugMenu.querySelectorAll("input");
     var deathScreen = document.querySelector("#respawnPanel");
     var deathReason = document.querySelector("#killer");
     var modals = document.querySelector("#modals > div");
@@ -370,7 +372,17 @@ transform:translateX(26px)
         settingsBackground.style.pointerEvents = 'none';
     });
     
-    settingsUncapSwitch.addEventListener('change', adjustAdSize);
+    settingsUncapSwitch.addEventListener('change', function() {
+        debugSliders.forEach(slider => {
+            if (slider.min != "0") {
+                slider.min = "0";
+                slider.max = "200";
+            } else if (slider.min = "0") {
+                slider.min = "10";
+                slider.max = "100";
+            }
+        });
+    });
     
     function retrieveData(accountData) {
         return fetch(accountData)

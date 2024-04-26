@@ -19,20 +19,20 @@
             <hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
             <button id="settings_back">BACK</button>
             <style>
-                .switchSettings {
+                .switch {
                     position:relative;
                     display:inline-block;
                     width:60px;
                     height:34px
                 }
                 
-                .switchSettings input {
+                .switch input {
                     opacity:0;
                     width:0;
                     height:0
                 }
                 
-                .sliderSettings {
+                .slider {
                     border-radius:34px;
                     position:absolute;
                     cursor:pointer;
@@ -45,7 +45,7 @@
                     transition:.4s
                 }
                 
-                .sliderSettings:before {
+                .slider:before {
                     border-radius:50%;
                     position:absolute;
                     content:"";
@@ -58,15 +58,15 @@
                     transition:.4s
                 }
                 
-                input:checked+.sliderSettings {
+                input:checked+.slider {
                     background-color:#2196F3
                 }
                 
-                input:focus+.sliderSettings {
+                input:focus+.slider {
                     box-shadow:0 0 1px #2196F3
                 }
                 
-                input:checked+.sliderSettings:before {
+                input:checked+.slider:before {
                     -webkit-transform:translateX(26px);
                     -ms-transform:translateX(26px);
                     transform:translateX(26px)

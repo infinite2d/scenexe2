@@ -9,30 +9,30 @@
             <div id="settings_menu" style="top: -100%;"></div>
             <h1 id="settings_header" class="radiantColor">Settings</h1>
             <hr id="settings_divider_top">
-            <div id="settings_cobalt_mode">
+            <div id="settings_uncap">
                 <label>
-                    <span id="settings_cobalt_mode_text">placeholder (going to be cobalt mode)</span>
+                    <span id="settings_uncap_text">Uncap Slider Limits</span>
                     <input type="checkbox">
-                    <span class="slider"></span>
+                    <span class="sliderSettings"></span>
                 </label>
             </div>
             <hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
             <button id="settings_back">BACK</button>
             <style>
-                .switch {
+                .switchSettings {
                     position:relative;
                     display:inline-block;
                     width:60px;
                     height:34px
                 }
                 
-                .switch input {
+                .switchSettings input {
                     opacity:0;
                     width:0;
                     height:0
                 }
                 
-                .slider {
+                .sliderSettings {
                     border-radius:34px;
                     position:absolute;
                     cursor:pointer;
@@ -45,7 +45,7 @@
                     transition:.4s
                 }
                 
-                .slider:before {
+                .sliderSettings:before {
                     border-radius:50%;
                     position:absolute;
                     content:"";
@@ -58,21 +58,21 @@
                     transition:.4s
                 }
                 
-                input:checked+.slider {
+                input:checked+.sliderSettings {
                     background-color:#2196F3
                 }
                 
-                input:focus+.slider {
+                input:focus+.sliderSettings {
                     box-shadow:0 0 1px #2196F3
                 }
                 
-                input:checked+.slider:before {
+                input:checked+.sliderSettings:before {
                     -webkit-transform:translateX(26px);
                     -ms-transform:translateX(26px);
                     transform:translateX(26px)
                 }
                 
-                #settings_cobalt_mode {
+                #settings_uncap {
                     display:flex;
                     align-items:center;
                     justify-content:center;
@@ -90,7 +90,7 @@
                     margin-top:.5vmin
                 }
                 
-                #settings_cobalt_mode_text {
+                #settings_uncap_text {
                     -webkit-text-size-adjust:100%;
                     -webkit-tap-highlight-color:#0000;
                     line-height:1.5;
@@ -304,8 +304,8 @@
     var settingsHeader = document.querySelector('#settings_header');
     var settingsDividerTop = document.querySelector('#settings_divider_top');
     var settingsDividerBottom = document.querySelector('#settings_divider_bottom');
-    var settingsCobaltMode = document.querySelector('#settings_cobalt_mode');
-    var settingsCobaltModeSwitch = document.querySelector('#settings_cobalt_mode input[type="checkbox"]');
+    var settingsUncap = document.querySelector('#settings_uncap');
+    var settingsUncapSwitch = document.querySelector('#settings_uncap input[type="checkbox"]');
     
     var regularAccountMenu = document.querySelector("#accountFull");
     var accountMenuDarkness = document.querySelector("#accountDark");
@@ -345,7 +345,7 @@
     settingsMenu.appendChild(settingsHeader);
     settingsMenu.appendChild(settingsDividerTop);
     settingsMenu.appendChild(settingsDividerBottom);
-    settingsMenu.appendChild(settingsCobaltMode);
+    settingsMenu.appendChild(settingsUncap);
     viewAccountButton.appendChild(viewAccountImage);
     
     viewAccountButton.addEventListener('click', function() {
@@ -370,33 +370,7 @@
         settingsBackground.style.pointerEvents = 'none';
     });
     
-    function isAd(element) {
-        const href = element.getAttribute('href');
-        if (href && (href.includes('https://ad.doubleclick.net') || href.includes('https://www.googleadservices.com'))) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    function adjustAdSize() {
-        /*        document.querySelectorAll('*').forEach(function(element) {
-            console.log(isAd(element));
-            const adRect = element.getBoundingClientRect();
-            const adWidth = adRect.width;
-            const adHeight = adRect.height;
-            if (settingsShrinkAdsSwitch.checked === true && isAd(element)) {
-                console.log("Work.");
-                element.style.width = adWidth / 2 + 'px';
-                element.style.height = adHeight / 2 + 'px';
-            } else if (settingsShrinkAdsSwitch.checked === false && isAd(element)) {
-                element.style.width = adWidth * 2 + 'px';
-                element.style.height = adHeight * 2 + 'px';
-            }
-        });*/
-    }
-    
-    settingsCobaltModeSwitch.addEventListener('change', adjustAdSize);
+    settingsUncapSwitch.addEventListener('change', adjustAdSize);
     
     function retrieveData(accountData) {
         return fetch(accountData)

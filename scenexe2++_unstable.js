@@ -13,7 +13,7 @@
                 <label>
                     <span id="settings_uncap_text">Uncap Slider Limits</span>
                     <input type="checkbox">
-                    <span class="sliderSettings"></span>
+                    <span class="slider"></span>
                 </label>
             </div>
             <hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">

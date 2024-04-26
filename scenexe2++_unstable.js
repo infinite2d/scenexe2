@@ -10,7 +10,7 @@
 <h1 id="settings_header" class="radiantColor">Settings</h1>
 <hr id="settings_divider_top">
 <div id="settings_uncap">
-<label id="settings_uncap_text">placeholder (going to be cobalt mode</label>
+<label id="settings_uncap_text">Uncap Slider Limits</label>
 <label class="switch_settings">
 <input type="checkbox">
 <span class="slider_settings"></span>

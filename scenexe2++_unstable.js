@@ -7,19 +7,18 @@
             </div>
             <div id="settings_background" class="panel" style="opacity: 0; pointer-events: none;"></div>
             <div id="settings_menu" style="top: -100%;"></div>
-            <h1 id="settings_header" class="radiantColor">Settings</h1>
-            <hr id="settings_divider_top">
-            <div id="settings_uncap">
-                <label>
-                    <span id="settings_uncap_text">Uncap Slider Limits</span>
-                    <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
-            <button id="settings_back">BACK</button>
-            <style>
+<h1 id="settings_header" class="radiantColor">Settings</h1>
+<hr id="settings_divider_top">
+<div id="settings_uncap">
+<label id="settings_uncap_text">placeholder (going to be cobalt mode</label>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+<hr id="settings_divider_bottom" style="width:100%;position:absolute;bottom:80px;left:50%;transform:translate(-50%,0);">
+<button id="settings_back">BACK</button>
+<style>
                .switch {
 position:relative;
 display:inline-block;

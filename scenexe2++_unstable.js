@@ -1,20 +1,4 @@
-// ==UserScript==
-// @name         Scenexe2++
-// @namespace    http://tampermonkey.net/
-// @version      V0.2617
-// @description  funny qol script for funny pew pew game
-// @author       infinite2d, _x7333 (ivy)
-// @license      MIT License
-// @match        https://scenexe2.io/
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=scenexe2.io
-// @grant        GM_addStyle
-// ==/UserScript==
-//
-// Credits:
-// _x7333 / ivy: Helped with CSS
-//
 (function() {
-    'use strict';
     const self = document.querySelector.bind(document);
     self('body').insertAdjacentHTML('afterbegin', `
 <div id="star_counter"></div>
